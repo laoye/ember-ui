@@ -102,11 +102,15 @@ export default class TemplateBuilderCanvasComponent extends Component {
     _unitToPx(value, unit) {
         const PPI = 96;
         switch (unit) {
-            case 'mm': return Math.round((value / 25.4) * PPI);
-            case 'cm': return Math.round((value / 2.54) * PPI);
-            case 'in': return Math.round(value * PPI);
+            case 'mm':
+                return Math.round((value / 25.4) * PPI);
+            case 'cm':
+                return Math.round((value / 2.54) * PPI);
+            case 'in':
+                return Math.round(value * PPI);
             case 'px':
-            default:   return Math.round(value);
+            default:
+                return Math.round(value);
         }
     }
 }

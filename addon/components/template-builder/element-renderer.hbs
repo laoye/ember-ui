@@ -14,7 +14,7 @@
     {{! TEXT }}
     {{#if this.isText}}
         <div class="tb-element-text" style={{this.textStyle}}>
-            {{{this.textContent}}}
+            {{this.textContent}}
         </div>
     {{/if}}
 
@@ -40,7 +40,7 @@
     {{! TABLE }}
     {{#if this.isTable}}
         <div class="tb-element-table w-full h-full overflow-auto">
-            <table class="w-full border-collapse text-xs" style="border-color: {{@element.border_color}};">
+            <table class="w-full border-collapse text-xs" style={{this.tableBorderStyle}}>
                 {{#if this.tableColumns}}
                     <thead>
                         <tr>
@@ -64,9 +64,9 @@
                             {{/each}}
                         {{else}}
                             {{! Preview placeholder rows }}
-                            {{#each (array 1 2 3) as |_row|}}
+                            {{#each (array 1 2 3)}}
                                 <tr>
-                                    {{#each this.tableColumns as |_col|}}
+                                    {{#each this.tableColumns}}
                                         <td class="border px-2 py-1 text-gray-400" style={{this.tableCellStyle}}>—</td>
                                     {{/each}}
                                 </tr>

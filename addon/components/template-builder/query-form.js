@@ -116,6 +116,20 @@ export default class TemplateBuilderQueryFormComponent extends Component {
     }
 
     // -------------------------------------------------------------------------
+    // Condition helpers
+    // -------------------------------------------------------------------------
+
+    /**
+     * Returns true when the condition operator requires a value input.
+     * Operators "null" and "not null" are unary — no value field is needed.
+     * Used in the template to replace the {{#unless (or ...)}} pattern that
+     * violates the simple-unless lint rule.
+     */
+    showConditionValue(operator) {
+        return operator !== 'null' && operator !== 'not null';
+    }
+
+    // -------------------------------------------------------------------------
     // Condition operators
     // -------------------------------------------------------------------------
 

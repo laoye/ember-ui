@@ -71,7 +71,7 @@ export default class TemplateBuilderElementRendererComponent extends Component {
     }
 
     @action
-    handleDestroy(el) {
+    handleDestroy() {
         if (this._interactable) {
             try {
                 this._interactable.unset();
@@ -99,9 +99,7 @@ export default class TemplateBuilderElementRendererComponent extends Component {
             // after property-panel updates (which re-render @element but do not
             // recreate the interact.js instance).
             const rotation = parseFloat(el.dataset.rotation) || 0;
-            el.style.transform = rotation
-                ? `translate(${x}px, ${y}px) rotate(${rotation}deg)`
-                : `translate(${x}px, ${y}px)`;
+            el.style.transform = rotation ? `translate(${x}px, ${y}px) rotate(${rotation}deg)` : `translate(${x}px, ${y}px)`;
             el.dataset.x = x;
             el.dataset.y = y;
         };
@@ -218,9 +216,7 @@ export default class TemplateBuilderElementRendererComponent extends Component {
         const y = parseFloat(el.dataset.y) || 0;
         const rotation = this.args.element.rotation ?? 0;
         el.dataset.rotation = rotation;
-        el.style.transform = rotation
-            ? `translate(${x}px, ${y}px) rotate(${rotation}deg)`
-            : `translate(${x}px, ${y}px)`;
+        el.style.transform = rotation ? `translate(${x}px, ${y}px) rotate(${rotation}deg)` : `translate(${x}px, ${y}px)`;
     }
 
     // -------------------------------------------------------------------------
@@ -248,22 +244,40 @@ export default class TemplateBuilderElementRendererComponent extends Component {
     }
 
     get selectionClass() {
-        return this.args.isSelected
-            ? 'ring-2 ring-blue-500 ring-offset-0'
-            : 'hover:ring-1 hover:ring-blue-300 hover:ring-offset-0';
+        return this.args.isSelected ? 'ring-2 ring-blue-500 ring-offset-0' : 'hover:ring-1 hover:ring-blue-300 hover:ring-offset-0';
     }
 
     get elementType() {
         return this.args.element?.type ?? 'text';
     }
 
-    get isText() { return this.elementType === 'text'; }
-    get isImage() { return this.elementType === 'image'; }
-    get isTable() { return this.elementType === 'table'; }
-    get isLine() { return this.elementType === 'line'; }
-    get isShape() { return this.elementType === 'shape'; }
-    get isQrCode() { return this.elementType === 'qr_code'; }
-    get isBarcode() { return this.elementType === 'barcode'; }
+    get isText() {
+        return this.elementType === 'text';
+    }
+
+    get isImage() {
+        return this.elementType === 'image';
+    }
+
+    get isTable() {
+        return this.elementType === 'table';
+    }
+
+    get isLine() {
+        return this.elementType === 'line';
+    }
+
+    get isShape() {
+        return this.elementType === 'shape';
+    }
+
+    get isQrCode() {
+        return this.elementType === 'qr_code';
+    }
+
+    get isBarcode() {
+        return this.elementType === 'barcode';
+    }
 
     // ── Text ──────────────────────────────────────────────────────────────────
 
@@ -299,13 +313,28 @@ export default class TemplateBuilderElementRendererComponent extends Component {
         return styles.join('; ');
     }
 
-    get imageSrc() { return this.args.element?.src ?? ''; }
-    get imageAlt() { return this.args.element?.alt ?? ''; }
+    get imageSrc() {
+        return this.args.element?.src ?? '';
+    }
+
+    get imageAlt() {
+        return this.args.element?.alt ?? '';
+    }
 
     // ── Table ─────────────────────────────────────────────────────────────────
 
-    get tableColumns() { return this.args.element?.columns ?? []; }
-    get tableRows() { return this.args.element?.rows ?? []; }
+    get tableColumns() {
+        return this.args.element?.columns ?? [];
+    }
+
+    get tableRows() {
+        return this.args.element?.rows ?? [];
+    }
+
+    get tableBorderStyle() {
+        const color = this.args.element?.border_color;
+        return color ? `border-color: ${color}` : '';
+    }
 
     get tableHeaderStyle() {
         const el = this.args.element;

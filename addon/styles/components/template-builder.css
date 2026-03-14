@@ -40,10 +40,26 @@ body[data-theme='dark'] .tb-canvas {
     z-index: 9999;
 }
 
-.tb-handle-nw { top: -4px;  left: -4px;  cursor: nw-resize; }
-.tb-handle-ne { top: -4px;  right: -4px; cursor: ne-resize; }
-.tb-handle-sw { bottom: -4px; left: -4px;  cursor: sw-resize; }
-.tb-handle-se { bottom: -4px; right: -4px; cursor: se-resize; }
+.tb-handle-nw {
+    top: -4px;
+    left: -4px;
+    cursor: nw-resize;
+}
+.tb-handle-ne {
+    top: -4px;
+    right: -4px;
+    cursor: ne-resize;
+}
+.tb-handle-sw {
+    bottom: -4px;
+    left: -4px;
+    cursor: sw-resize;
+}
+.tb-handle-se {
+    bottom: -4px;
+    right: -4px;
+    cursor: se-resize;
+}
 
 /* ─── Toolbar ────────────────────────────────────────────────────────────── */
 
@@ -266,4 +282,16 @@ body[data-theme='dark'] .tb-icon-btn:hover {
     padding: 0 8px;
     box-sizing: border-box;
 }
-.tb-query-form select.tb-input { padding-right: 4px; }
+
+.tb-query-form select.tb-input {
+    padding-right: 4px;
+}
+
+/* Fixed-width selects inside the query form condition / sort rows */
+.tb-select-operator {
+    width: 130px;
+}
+
+.tb-select-direction {
+    width: 120px;
+}

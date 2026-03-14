@@ -10,9 +10,9 @@
     <div class="flex-1 overflow-y-auto">
         {{#if this.sortedElements.length}}
             {{#each this.sortedElements as |element|}}
+                {{! Outer row is a div so that real <button> children are valid. }}
                 <div
                     class="tb-layer-row group flex items-center px-2 py-1.5 cursor-pointer border-b border-transparent hover:bg-gray-50 dark:hover:bg-gray-800 {{if (this.isSelected element) 'bg-blue-50 dark:bg-blue-900/20 border-l-2 border-l-blue-500'}}"
-                    role="button"
                     {{on "click" (fn this.selectElement element)}}
                 >
                     {{! Type icon }}
@@ -31,7 +31,7 @@
                                 {{on "input" (fn (mut this.renameValue) value="target.value")}}
                                 {{on "keydown" (fn this.handleRenameKeydown element)}}
                                 {{on "blur" (fn this.commitRename element)}}
-                                {{did-insert (fn (action (mut this.renameValue) this.renameValue))}}
+                                {{did-insert (fn (mut this.renameValue) this.renameValue)}}
                             />
                         {{else}}
                             <span

@@ -79,7 +79,7 @@
                                 >
                                     <FaIcon @icon={{this.typeIcon variable.type}} class="w-3 h-3 mr-2 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                                     <div class="flex-1 min-w-0 text-left">
-                                        <span class="block text-xs text-gray-700 dark:text-gray-300 font-mono">{{{variable.path}}}</span>
+                                        <span class="block text-xs text-gray-700 dark:text-gray-300 font-mono">{{variable.path}}</span>
                                         <span class="block text-xs text-gray-400 dark:text-gray-500 truncate">{{variable.label}}</span>
                                     </div>
                                     <span class="text-xs text-gray-300 dark:text-gray-600 font-mono truncate max-w-24 ml-2 hidden group-hover:block">{{variable.example}}</span>
@@ -113,7 +113,7 @@
                                         >
                                             <FaIcon @icon={{this.typeIcon variable.type}} class="w-3 h-3 mr-2 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                                             <div class="flex-1 min-w-0 text-left">
-                                                <span class="block text-xs text-gray-700 dark:text-gray-300 font-mono">{{{variable.path}}}</span>
+                                                <span class="block text-xs text-gray-700 dark:text-gray-300 font-mono">{{variable.path}}</span>
                                                 <span class="block text-xs text-gray-400 dark:text-gray-500 truncate">{{variable.label}}</span>
                                             </div>
                                             <span class="text-xs text-gray-300 dark:text-gray-600 font-mono truncate max-w-24 ml-2 hidden group-hover:block">{{variable.example}}</span>
@@ -180,7 +180,7 @@
                                             {{on "click" (fn this.insertVariableIntoFormula variable)}}
                                         >
                                             <FaIcon @icon="hashtag" class="w-3 h-3 mr-2 text-gray-400 flex-shrink-0" />
-                                            <span class="text-xs font-mono text-gray-700 dark:text-gray-300">{{{variable.path}}}</span>
+                                            <span class="text-xs font-mono text-gray-700 dark:text-gray-300">{{variable.path}}</span>
                                             <span class="text-xs text-gray-400 dark:text-gray-500 ml-2 truncate">{{variable.label}}</span>
                                         </button>
                                     {{/if}}
