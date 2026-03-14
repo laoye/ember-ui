@@ -1,4 +1,4 @@
-const currencies = [
+export const currencies = [
     {
         iso2: 'AW',
         name: 'Aruba',
