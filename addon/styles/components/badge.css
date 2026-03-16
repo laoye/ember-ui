@@ -46,7 +46,11 @@
 .status-badge.dispatched-status-badge > span,
 .status-badge.operational-status-badge > span,
 .status-badge.active-status-badge > span,
-.status-badge.completed-status-badge > span {
+.status-badge.completed-status-badge > span,
+/* ── Invoice statuses ── */
+.status-badge.paid-status-badge > span,
+.status-badge.settled-status-badge > span,
+.status-badge.captured-status-badge > span {
     @apply bg-green-800 border-green-700 text-green-100;
 }
 
@@ -67,7 +71,10 @@
 .status-badge.dispatched-status-badge > span svg,
 .status-badge.operational-status-badge > span svg,
 .status-badge.active-status-badge > span svg,
-.status-badge.completed-status-badge > span svg {
+.status-badge.completed-status-badge > span svg,
+.status-badge.paid-status-badge > span svg,
+.status-badge.settled-status-badge > span svg,
+.status-badge.captured-status-badge > span svg {
     @apply text-green-300;
 }
 
@@ -153,7 +160,13 @@
 .status-badge.inactive-status-badge > span,
 .status-badge.failed-status-badge > span,
 .status-badge.cancelled-status-badge > span,
-.status-badge.canceled-status-badge > span {
+.status-badge.canceled-status-badge > span,
+/* ── Invoice / transaction terminal-failure statuses ── */
+.status-badge.overdue-status-badge > span,
+.status-badge.void-status-badge > span,
+.status-badge.voided-status-badge > span,
+.status-badge.reversed-status-badge > span,
+.status-badge.chargeback-status-badge > span {
     @apply bg-red-800 border-red-700 text-red-100;
 }
 
@@ -172,7 +185,12 @@
 .status-badge.disputed-status-badge > span svg,
 .status-badge.failed-status-badge > span svg,
 .status-badge.cancelled-status-badge > span svg,
-.status-badge.canceled-status-badge > span svg {
+.status-badge.canceled-status-badge > span svg,
+.status-badge.overdue-status-badge > span svg,
+.status-badge.void-status-badge > span svg,
+.status-badge.voided-status-badge > span svg,
+.status-badge.reversed-status-badge > span svg,
+.status-badge.chargeback-status-badge > span svg {
     @apply text-red-300;
 }
 
@@ -196,7 +214,13 @@
 .status-badge.trial-status-badge > span,
 .status-badge.trialing-status-badge > span,
 .status-badge.grace-period-status-badge > span,
-.status-badge.pending-status-badge > span {
+.status-badge.pending-status-badge > span,
+/* ── Invoice statuses requiring attention ── */
+.status-badge.partial-status-badge > span,
+.status-badge.partially-paid-status-badge > span,
+.status-badge.sent-status-badge > span,
+.status-badge.viewed-status-badge > span,
+.status-badge.expired-status-badge > span {
     @apply bg-yellow-700 border-yellow-700 text-yellow-100;
 }
 
@@ -220,7 +244,12 @@
 .status-badge.trial-status-badge > span svg,
 .status-badge.trialing-status-badge > span svg,
 .status-badge.grace-period-status-badge > span svg,
-.status-badge.pending-status-badge > span svg {
+.status-badge.pending-status-badge > span svg,
+.status-badge.partial-status-badge > span svg,
+.status-badge.partially-paid-status-badge > span svg,
+.status-badge.sent-status-badge > span svg,
+.status-badge.viewed-status-badge > span svg,
+.status-badge.expired-status-badge > span svg {
     @apply text-yellow-300;
 }
 
@@ -229,7 +258,11 @@
 .status-badge.operational-suggestion-status-badge > span,
 .status-badge.dispatched-status-badge > span,
 .status-badge.matched-status-badge > span,
-.status-badge.assigned-status-badge > span {
+.status-badge.assigned-status-badge > span,
+/* ── Transaction type labels ── */
+.status-badge.invoice-payment-status-badge > span,
+.status-badge.revenue-recognition-status-badge > span,
+.status-badge.journal-entry-status-badge > span {
     @apply bg-indigo-800 border-indigo-700 text-indigo-100;
 }
 
@@ -238,7 +271,10 @@
 .status-badge.operational-suggestion-status-badge > span svg,
 .status-badge.dispatched-status-badge > span svg,
 .status-badge.matched-status-badge > span svg,
-.status-badge.assigned-status-badge > span svg {
+.status-badge.assigned-status-badge > span svg,
+.status-badge.invoice-payment-status-badge > span svg,
+.status-badge.revenue-recognition-status-badge > span svg,
+.status-badge.journal-entry-status-badge > span svg {
     @apply text-indigo-300;
 }
 
@@ -251,7 +287,12 @@
 .status-badge.triage-status-badge > span,
 .status-badge.alerted-status-badge > span,
 .status-badge.flagged-status-badge > span,
-.status-badge.medium-status-badge > span {
+.status-badge.medium-status-badge > span,
+/* ── Transaction processing statuses ── */
+.status-badge.processing-status-badge > span,
+.status-badge.authorized-status-badge > span,
+.status-badge.requires-action-status-badge > span,
+.status-badge.requires-capture-status-badge > span {
     @apply bg-orange-700 border-orange-700 text-orange-100;
 }
 
@@ -264,7 +305,11 @@
 .status-badge.triage-status-badge > span svg,
 .status-badge.alerted-status-badge > span svg,
 .status-badge.flagged-status-badge > span svg,
-.status-badge.medium-status-badge > span svg {
+.status-badge.medium-status-badge > span svg,
+.status-badge.processing-status-badge > span svg,
+.status-badge.authorized-status-badge > span svg,
+.status-badge.requires-action-status-badge > span svg,
+.status-badge.requires-capture-status-badge > span svg {
     @apply text-orange-300;
 }
 
@@ -274,7 +319,12 @@
 .status-badge.low-status-badge > span,
 .status-badge.approved-status-badge > span,
 .status-badge.info-status-badge > span,
-.status-badge.in-progress-status-badge > span {
+.status-badge.in-progress-status-badge > span,
+/* ── Transaction direction indicators ── */
+.status-badge.credit-status-badge > span,
+.status-badge.debit-status-badge > span,
+.status-badge.refunded-status-badge > span,
+.status-badge.refund-status-badge > span {
     @apply bg-blue-800 border-blue-700 text-blue-100;
 }
 
@@ -284,7 +334,11 @@
 .status-badge.loq-status-badge > span svg,
 .status-badge.approved-status-badge > span svg,
 .status-badge.info-status-badge > span svg,
-.status-badge.in-progress-status-badge > span svg {
+.status-badge.in-progress-status-badge > span svg,
+.status-badge.credit-status-badge > span svg,
+.status-badge.debit-status-badge > span svg,
+.status-badge.refunded-status-badge > span svg,
+.status-badge.refund-status-badge > span svg {
     @apply text-blue-300;
 }
 
