@@ -1,15 +1,15 @@
 <Modal::Default @modalIsOpened={{@modalIsOpened}} @options={{@options}} @confirm={{@onConfirm}} @decline={{@onDecline}} as |options|>
     <div class="modal-body-container">
-        <InputGroup @name="Report Title" @required={{true}}>
-            <Input @value={{@options.title}} placeholder="Enter report title..." class="form-input" />
+        <InputGroup @name={{t "component.save-report.report-title"}} @required={{true}}>
+            <Input @value={{@options.title}} placeholder={{t "component.save-report.enter-title"}} class="form-input" />
         </InputGroup>
 
-        <InputGroup @name="Description">
-            <Textarea @value={{@options.description}} placeholder="Optional description..." class="form-input" rows="3" />
+        <InputGroup @name={{t "common.description"}}>
+            <Textarea @value={{@options.description}} placeholder={{t "component.save-report.optional-description"}} class="form-input" rows="3" />
         </InputGroup>
 
-        <InputGroup @name="Category">
-            <Select @value={{@options.category}} @options={{@options.categoryOptions}} @placeholder="Select category..." @onChange={{@options.setCategory}} class="form-input" />
+        <InputGroup @name={{t "common.category"}}>
+            <Select @value={{@options.category}} @options={{@options.categoryOptions}} @placeholder={{t "component.save-report.select-category"}} @onChange={{@options.setCategory}} class="form-input" />
         </InputGroup>
 
         {{#if @options.showScheduling}}
@@ -17,17 +17,17 @@
                 <div class="flex items-center mb-3">
                     <input type="checkbox" checked={{@options.isScheduled}} {{on "change" @options.toggleScheduling}} class="form-checkbox h-4 w-4 text-blue-600" />
                     <label class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Schedule this report
+                        {{t "component.save-report.schedule-report"}}
                     </label>
                 </div>
 
                 {{#if @options.isScheduled}}
                     <div class="grid grid-cols-2 gap-4">
-                        <InputGroup @name="Frequency">
+                        <InputGroup @name={{t "component.save-report.frequency"}}>
                             <Select @value={{@options.scheduleFrequency}} @options={{@options.frequencyOptions}} @onChange={{@options.setScheduleFrequency}} class="form-input" />
                         </InputGroup>
 
-                        <InputGroup @name="Time">
+                        <InputGroup @name={{t "common.time"}}>
                             <Input @type="time" @value={{@options.scheduleTime}} class="form-input" />
                         </InputGroup>
                     </div>

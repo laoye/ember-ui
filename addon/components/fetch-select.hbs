@@ -43,7 +43,7 @@
         @search={{perform this.searchOptions}}
         @searchEnabled={{get-default-value @searchEnabled true}}
         @searchField={{@searchField}}
-        @searchMessage={{@searchMessage}}
+        @searchMessage={{or @searchMessage (t "ember-power-select.search-message")}}
         @searchPlaceholder={{@searchPlaceholder}}
         @selected={{this.selected}}
         @selectedItemComponent={{@selectedItemComponent}}

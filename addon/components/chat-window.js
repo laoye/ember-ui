@@ -10,6 +10,8 @@ export default class ChatWindowComponent extends Component {
     @service socket;
     @service currentUser;
     @service modalsManager;
+    @service intl;
+    @service notifications;
     @service fetch;
     @service store;
     @tracked chatWindowElement;
@@ -161,10 +163,10 @@ export default class ChatWindowComponent extends Component {
     @action removeParticipant(participant) {
         const isRemovingSelf = participant.id === this.sender.id;
         this.modalsManager.confirm({
-            title: isRemovingSelf ? 'Are you sure you would like to leave this chat?' : `Are you sure you wish to remove this participant (${participant.name}) from the chat?`,
+            title: isRemovingSelf ? this.intl.t('chat.leave-chat-confirm-title') : this.intl.t('chat.remove-participant-confirm-title', { participantName: participant.name }),
             body: isRemovingSelf
-                ? 'Once you leave this chat you will not be able to access this chat unless you are added as a participant again'
-                : 'Proceeding remove this participant from the chat.',
+                ? this.intl.t('chat.leave-chat-confirm-body')
+                : this.intl.t('chat.remove-participant-confirm-body'),
             confirm: (modal) => {
                 modal.startLoading();
                 if (isRemovingSelf) {
@@ -178,8 +180,8 @@ export default class ChatWindowComponent extends Component {
 
     @action editChatName() {
         this.modalsManager.show('modals/edit-chat-name', {
-            title: 'Edit chat channel name',
-            acceptButtonText: 'Save Changes',
+            title: this.intl.t('chat.edit-channel-name'),
+            acceptButtonText: this.intl.t('common.save-changes'),
             acceptButtonIcon: 'save',
             channelName: this.channel.name,
             confirm: (modal) => {
@@ -188,7 +190,7 @@ export default class ChatWindowComponent extends Component {
                     return this.chat.updateChatChannel(this.channel, { name: modal.getOption('channelName') });
                 }
 
-                this.notifications.warning('Name required to save changes.');
+                this.notifications.warning(this.intl.t('chat.name-required'));
             },
         });
     }

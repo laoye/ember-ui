@@ -1,7 +1,7 @@
 <div class="rounded-lg border border-gray-200 dark:border-gray-700" ...attributes>
     <div class="flex flex-row items-center justify-between px-4 py-2">
-        <div class="mr-2 text-sm">Field Options</div>
-        <Button @type="magic" @icon="plus" @text="Add new option" @size="xs" @onClick={{this.addOption}} />
+        <div class="mr-2 text-sm">{{t "component.custom-field.field-options"}}</div>
+        <Button @type="magic" @icon="plus" @text={{t "component.custom-field.add-new-option"}} @size="xs" @onClick={{this.addOption}} />
     </div>
     {{#each-in this.options as |index option|}}
         <div class="border-t border-gray-200 dark:border-gray-700 flex flex-row items-center pr-2 py-1">

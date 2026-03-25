@@ -1,23 +1,23 @@
 <Modal::Default @modalIsOpened={{@modalIsOpened}} @options={{@options}} @confirm={{@onConfirm}} @decline={{@onDecline}}>
     <div class="modal-body-container">
         <InfoBlock @type="info" @icon="lightbulb" @iconSize="lg" class="mb-5">
-            <div class="font-extrabold">Verify your email address.</div>
-            <div>Re-verify your email address and click Send to continue.</div>
+            <div class="font-extrabold">{{t "component.verify-email.title"}}</div>
+            <div>{{t "component.verify-email.subtitle"}}</div>
         </InfoBlock>
         {{#if @options.sent}}
             <InputGroup
                 @type="tel"
-                @name="Enter verification code"
+                @name={{t "component.verify-email.enter-code"}}
                 @value={{@options.code}}
-                @helpText="Enter the code you received in your email, please check spam if not in inbox."
+                @helpText={{t "component.verify-email.enter-code-help"}}
                 @inputClass="input-lg"
             />
         {{else}}
             <InputGroup
                 @type="email"
-                @name="Verify your email address"
+                @name={{t "component.verify-email.verify-email"}}
                 @value={{@options.email}}
-                @helpText="Have a second look and confirm your email address is correct."
+                @helpText={{t "component.verify-email.verify-email-help"}}
                 @inputClass="input-lg"
             />
         {{/if}}

@@ -7,7 +7,7 @@
     >
         <div class="chat-window-controls-container">
             <div class="chat-window-name">
-                {{n-a this.channel.name "Untitled Chat"}}
+                {{n-a this.channel.name (t "chat.untitled-chat")}}
                 <a href="#" {{on "click" this.editChatName}} class="ml-2 hover:opacity-50">
                     <FaIcon @icon="pencil" @size="xs" />
                 </a>
@@ -66,7 +66,7 @@
                     >
                         <a tabindex={{0}} class="btn btn-default btn-xs cursor-pointer">
                             <FaIcon @icon="paperclip" @size="sm" class="mr-2" />
-                            <span>Add Attachment</span>
+                            <span>{{t "chat.add-attachment"}}</span>
                         </a>
                     </FileUpload>
                     {{#if this.pendingAttachmentFile}}
@@ -85,13 +85,13 @@
                 {{/if}}
             </div>
             <div class="chat-window-input-box">
-                <Textarea @value={{this.pendingMessageContent}} {{on "keypress" this.handleKeyPress}} placeholder="Type your message here" class="chat-window-input" rows="3" />
+                <Textarea @value={{this.pendingMessageContent}} {{on "keypress" this.handleKeyPress}} placeholder={{t "chat.type-message-placeholder"}} class="chat-window-input" rows="3" />
             </div>
             <div class="chat-window-submit-container">
                 <Button
                     @type="primary"
                     @icon="paper-plane"
-                    @text="Send"
+                    @text={{t "chat.send"}}
                     @size="xs"
                     @onClick={{perform this.sendMessage}}
                     @disabled={{not this.pendingMessageContent}}

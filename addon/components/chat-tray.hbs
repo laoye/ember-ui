@@ -21,16 +21,16 @@
         <dd.Content class="chat-tray-panel-container {{@contentClass}} {{if (media 'isMobile') 'is-mobile'}}">
             <div class="chat-tray-panel">
                 <div class="p-4">
-                    <Button @type="primary" @text="Start Chat" @icon="paper-plane" @onClick={{dropdown-fn dd this.startChat}} />
+                    <Button @type="primary" @text={{t "chat.start-chat"}} @icon="paper-plane" @onClick={{dropdown-fn dd this.startChat}} />
                 </div>
                 <div class="flex flex-col">
                     {{#each this.channels as |channel|}}
                         <div class="chat-tray-channel-preview flex items-start px-4 py-3 border-t dark:border-gray-700 border-gray-200">
                             <button type="button" class="chat-tray-channel-preview-btn flex flex-col flex-1 cursor-default" {{on "click" (dropdown-fn dd this.openChannel channel)}}>
                                 <div class="flex items-center mb-2">
-                                    <div class="chat-tray-channel-preview-title flex self-start items-center font-bold">{{n-a channel.title "Untitled Chat"}}</div>
+                                    <div class="chat-tray-channel-preview-title flex self-start items-center font-bold">{{n-a channel.title (t "chat.untitled-chat")}}</div>
                                     {{#if channel.unread_count}}
-                                        <Badge @status="info" @hideStatusDot={{true}} class="flex self-start ml-2">{{pluralize channel.unread_count "Unread"}}</Badge>
+                                        <Badge @status="info" @hideStatusDot={{true}} class="flex self-start ml-2">{{channel.unread_count}} {{t "chat.unread"}}</Badge>
                                     {{/if}}
                                 </div>
                                 <div class="flex flex-row">
@@ -47,7 +47,7 @@
                                         {{#if channel.last_message.attachments}}
                                             <div class="chat-tray-channel-preview-last-message-attachments">
                                                 <FaIcon @icon="paperclip" @size="sm" class="mr-0.5" />
-                                                {{pluralize channel.last_message.attachments.length "Attachment"}}
+                                                {{channel.last_message.attachments.length}} {{t "chat.attachment"}}
                                             </div>
                                         {{/if}}
                                     </div>

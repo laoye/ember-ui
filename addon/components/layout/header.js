@@ -20,18 +20,30 @@ export default class LayoutHeaderComponent extends Component {
     @service universe;
     @service currentUser;
     @service abilities;
+    @service intl;
     @service fetch;
     @tracked company;
-    @tracked organizationMenuItems = [];
-    @tracked userMenuItems = [];
+    @tracked _extraOrganizationMenuItems = [];
+    @tracked _extraUserMenuItems = [];
     @tracked extensions = [];
 
     constructor(owner, { organizationMenuItems = [], userMenuItems = [] }) {
         super(...arguments);
         this.extensions = getOwner(this).application.extensions ?? [];
         this.company = this.currentUser.getCompany();
-        this.organizationMenuItems = this.mergeOrganizationMenuItems(organizationMenuItems);
-        this.userMenuItems = this.mergeUserMenuItems(userMenuItems);
+        this._extraOrganizationMenuItems = organizationMenuItems;
+        this._extraUserMenuItems = userMenuItems;
+    }
+
+    get organizationMenuItems() {
+        // Access intl.locale to make this getter reactive to locale changes
+        this.intl.locale;
+        return this.mergeOrganizationMenuItems(this._extraOrganizationMenuItems);
+    }
+
+    get userMenuItems() {
+        this.intl.locale;
+        return this.mergeUserMenuItems(this._extraUserMenuItems);
     }
 
     mergeOrganizationMenuItems(organizationMenuItems = []) {
@@ -80,19 +92,19 @@ export default class LayoutHeaderComponent extends Component {
             {
                 id: 'console-home',
                 route: 'console.home',
-                text: 'Home',
+                text: this.intl.t('layout.header.menus.organization.home'),
                 icon: 'house',
             },
             {
                 id: 'organization-settings',
                 route: 'console.settings.index',
-                text: 'Organization settings',
+                text: this.intl.t('layout.header.menus.organization.settings'),
                 icon: 'gear',
             },
             {
                 id: 'create-or-join-organizations',
                 href: 'javascript:;',
-                text: 'Create or join organizations',
+                text: this.intl.t('layout.header.menus.organization.create-or-join'),
                 action: 'createOrJoinOrg',
                 icon: 'building',
             },
@@ -103,7 +115,7 @@ export default class LayoutHeaderComponent extends Component {
             staticMenuItems.pushObject({
                 id: 'explore-extensions',
                 route: 'console.extensions',
-                text: 'Explore extensions',
+                text: this.intl.t('layout.header.menus.organization.explore-extensions'),
                 icon: 'puzzle-piece',
             });
         }
@@ -148,7 +160,7 @@ export default class LayoutHeaderComponent extends Component {
                 },
                 {
                     route: 'console.admin',
-                    text: 'Admin',
+                    text: this.intl.t('layout.header.menus.organization.admin'),
                     icon: 'toolbox',
                 },
             ]);
@@ -161,7 +173,7 @@ export default class LayoutHeaderComponent extends Component {
             },
             {
                 href: 'javascript:;',
-                text: 'Logout',
+                text: this.intl.t('layout.header.menus.organization.logout'),
                 action: 'invalidateSession',
                 icon: 'person-running',
             },
@@ -190,13 +202,13 @@ export default class LayoutHeaderComponent extends Component {
                 id: 'view-profile-user-nav-item',
                 wrapperClass: 'view-profile-user-nav-item',
                 route: 'console.account.index',
-                text: 'View Profile',
+                text: this.intl.t('layout.header.menus.user.view-profile'),
             },
             {
                 id: 'show-keyboard-shortcuts-user-nav-item',
                 wrapperClass: 'show-keyboard-shortcuts-user-nav-item',
                 href: 'javascript:;',
-                text: 'Show keyboard shortcuts',
+                text: this.intl.t('layout.header.menus.user.keyboard-shortcuts'),
                 disabled: true,
                 action: 'showKeyboardShortcuts',
             },
@@ -207,7 +219,7 @@ export default class LayoutHeaderComponent extends Component {
                 id: 'changelog-user-nav-item',
                 wrapperClass: 'changelog-user-nav-item',
                 href: 'javascript:;',
-                text: 'Changelog',
+                text: this.intl.t('layout.header.menus.user.changelog'),
                 action: 'viewChangelog',
             },
         ];
@@ -218,7 +230,7 @@ export default class LayoutHeaderComponent extends Component {
                 id: 'developers-user-nav-item',
                 wrapperClass: 'developers-user-nav-item',
                 route: 'console.developers',
-                text: 'Developers',
+                text: this.intl.t('layout.header.menus.user.developers'),
             });
         }
 
@@ -228,7 +240,7 @@ export default class LayoutHeaderComponent extends Component {
                 id: 'discord',
                 href: 'https://discord.gg/MJQgxHwN',
                 target: '_discord',
-                text: 'Join Discord Community',
+                text: this.intl.t('layout.header.menus.user.join-discord'),
                 icon: 'arrow-up-right-from-square',
             },
             {
@@ -236,7 +248,7 @@ export default class LayoutHeaderComponent extends Component {
                 wrapperClass: 'support-user-nav-item',
                 href: 'https://github.com/fleetbase/fleetbase/issues',
                 target: '_support',
-                text: 'Help & Support',
+                text: this.intl.t('layout.header.menus.user.help-support'),
                 icon: 'arrow-up-right-from-square',
             },
             {
@@ -244,7 +256,7 @@ export default class LayoutHeaderComponent extends Component {
                 wrapperClass: 'docs-user-nav-item',
                 href: 'https://docs.fleetbase.io',
                 target: '_docs',
-                text: 'Documentation',
+                text: this.intl.t('layout.header.menus.user.documentation'),
                 icon: 'arrow-up-right-from-square',
             },
         ];
@@ -279,7 +291,7 @@ export default class LayoutHeaderComponent extends Component {
             },
             {
                 href: 'javascript:;',
-                text: 'Logout',
+                text: this.intl.t('layout.header.menus.user.logout'),
                 action: 'invalidateSession',
                 icon: 'person-running',
             },

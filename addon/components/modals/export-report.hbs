@@ -2,14 +2,12 @@
     <div class="modal-body-container">
         <div class="mb-4">
             <p class="text-sm text-gray-600 dark:text-gray-300">
-                Export
-                {{@options.rowCount}}
-                rows of data in your preferred format.
+                {{t "component.export.export-rows" rowCount=@options.rowCount}}
             </p>
         </div>
 
-        <InputGroup @name="Export Format" @required={{true}}>
-            <Select @value={{@options.format}} @options={{@options.formatOptions}} @placeholder="Select export format..." @onChange={{@options.setFormat}} class="form-input" />
+        <InputGroup @name={{t "component.export.export-format"}} @required={{true}}>
+            <Select @value={{@options.format}} @options={{@options.formatOptions}} @placeholder={{t "component.export.select-format"}} @onChange={{@options.setFormat}} class="form-input" />
         </InputGroup>
 
         {{#if (eq @options.format "csv")}}
@@ -17,8 +15,8 @@
                 <div class="flex items-start">
                     <FaIcon @icon="info-circle" class="text-blue-500 mt-0.5 mr-2" />
                     <div class="text-sm text-blue-700 dark:text-blue-300">
-                        <p class="font-medium">CSV Export Options</p>
-                        <p>Data will be exported as comma-separated values, suitable for Excel and other spreadsheet applications.</p>
+                        <p class="font-medium">{{t "component.export.csv-options"}}</p>
+                        <p>{{t "component.export.csv-description"}}</p>
                     </div>
                 </div>
             </div>
@@ -29,17 +27,17 @@
                 <div class="flex items-start">
                     <FaIcon @icon="info-circle" class="text-green-500 mt-0.5 mr-2" />
                     <div class="text-sm text-green-700 dark:text-green-300">
-                        <p class="font-medium">JSON Export Options</p>
-                        <p>Data will be exported as structured JSON, suitable for API consumption and data processing.</p>
+                        <p class="font-medium">{{t "component.export.json-options"}}</p>
+                        <p>{{t "component.export.json-description"}}</p>
                     </div>
                 </div>
             </div>
         {{/if}}
 
-        <InputGroup @name="File Name">
+        <InputGroup @name={{t "component.export.file-name"}}>
             <Input @value={{@options.fileName}} placeholder="report-export" class="form-input" />
             <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                File extension will be added automatically
+                {{t "component.export.file-extension-auto"}}
             </div>
         </InputGroup>
     </div>

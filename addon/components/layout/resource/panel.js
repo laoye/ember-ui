@@ -55,10 +55,10 @@ export default class LayoutResourcePanelComponent extends Component {
         }
 
         if (this.resource.isNew) {
-            return `Create new ${this.resourceType}`;
+            return this.intl.t('common.create-new-resource', { resource: this.resourceType.toLowerCase() });
         }
 
-        return 'Save Changes';
+        return this.intl.t('common.save-changes');
     }
 
     constructor() {
@@ -115,7 +115,7 @@ export default class LayoutResourcePanelComponent extends Component {
             return;
         }
 
-        this.notifications.success(`${this.resourceType} ${this.resourceName ? `(${this.resourceName})` : ''} saved successfully.`);
+        this.notifications.success(this.intl.t('common.resource-updated-success', { resource: this.resourceType, resourceName: this.resourceName ?? '' }));
         contextComponentCallback(this, 'onAfterSave', this.resource);
     }
 }

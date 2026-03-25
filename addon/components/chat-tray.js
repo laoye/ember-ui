@@ -14,6 +14,7 @@ export default class ChatTrayComponent extends Component {
     @service store;
     @service modalsManager;
     @service currentUser;
+    @service intl;
     @service media;
     @tracked channels = [];
     @tracked unreadCount = 0;
@@ -124,15 +125,15 @@ export default class ChatTrayComponent extends Component {
     }
 
     @action startChat() {
-        this.chat.createChatChannel('Untitled Chat').then((chatChannelRecord) => {
+        this.chat.createChatChannel(this.intl.t('chat.untitled-chat')).then((chatChannelRecord) => {
             this.openChannel(chatChannelRecord);
         });
     }
 
     @action removeChannel(chatChannelRecord) {
         this.modalsManager.confirm({
-            title: `Are you sure you wish to end this chat (${chatChannelRecord.title})?`,
-            body: 'Once this chat is ended, it will no longer be accessible for anyone.',
+            title: this.intl.t('chat.end-chat-confirm-title', { chatTitle: chatChannelRecord.title }),
+            body: this.intl.t('chat.end-chat-confirm-body'),
             confirm: (modal) => {
                 modal.startLoading();
 

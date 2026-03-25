@@ -59,7 +59,7 @@
     @searchEnabled={{if (eq @searchEnabled false) false true}}
     @searchField={{or @optionLabel @searchField}}
     @searchFieldPosition={{or @searchFieldPosition "trigger"}}
-    @searchMessage={{@searchMessage}}
+    @searchMessage={{or @searchMessage (t "ember-power-select.search-message")}}
     @searchPlaceholder={{@searchPlaceholder}}
     @selectedItemComponent={{ensure-safe-component @selectedItemComponent}}
     @eventType={{@eventType}}
