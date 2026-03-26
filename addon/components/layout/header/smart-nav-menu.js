@@ -161,8 +161,14 @@ export default class LayoutHeaderSmartNavMenuComponent extends Component {
         const raw = this.universe.headerMenuItems ?? [];
         const visible = [];
         for (const item of raw) {
+            // Shortcuts are not standalone extensions — they should be visible
+            // if and only if their parent extension is visible.  Use _parentId
+            // for the ability check so the shortcut inherits the parent's
+            // permission rather than being checked against its own (non-existent)
+            // extension ability, which would always throw and default to visible.
+            const abilityId = item._isShortcut && item._parentId ? item._parentId : item.id;
             try {
-                if (this.abilities.can(`${item.id} see extension`)) {
+                if (this.abilities.can(`${abilityId} see extension`)) {
                     visible.push(item);
                 }
             } catch (_) {
